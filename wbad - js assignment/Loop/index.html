@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        li {
+            font-weight: bold;
+        }
+    </style>
+    <title>Loop Statement</title>
+</head>
+<body>
+    <h3>Nama: Muhammad Rikhza Maulana <br>NIM: 2440112885</h3>
+    <h1>Loop Statement</h1>
+    <ol>
+        <li>The For Loop</li>
+        <pre><code>for (let i = 0; i <= 10; i++) {
+                if (i % 2 == 0) {
+                document.getElementById("even1").innerHTML += "even num = " + i ;
+            }
+            
+        }</code></pre>
+        <p id="even1" style="color: red;"></p>
+        <li>The For In Loop</li>
+        <pre><code>const car = {carbrand:"honda", carname:"jazz", cartype:"S type"}
+            for (const key in car) {
+                if (Object.hasOwnProperty.call(car, key)) {
+                    const element = car[key] + " ";
+                    document.getElementById("even2").innerHTML += element ;
+                }
+            }</code></pre>
+        <p id="even2" style="color: red;"></p>
+        <li>The For of Loop</li>
+        <pre><code>const moto = ["yamaha", "honda", "Suzuki"];
+            for (const iterator of moto) {
+                document.getElementById("even3").innerHTML += iterator + " ";
+            }</code></pre>
+        <p id="even3" style="color: red;"></p>
+        <li>The While Loop</li>
+        <pre><code>let w = 0;
+            while (w <= 10) {
+                if (w % 2 == 0) {
+                    document.getElementById("even4").innerHTML += "even num = " + w + '</br>';
+                }
+                w++
+            }</code></pre>
+        <p id="even4" style="color: red;"></p>
+        <li>The Do While Loop</li>
+        <pre><code>let y = 0;
+            do {
+                if (y % 2 == 0) {
+                    document.getElementById("even5").innerHTML += "even num = " + y + '</br>';
+                }
+                y++
+            } while (y <= 10);</code></pre>
+        <p id="even5" style="color: red;"></p>
+    </ol>
+
+    <script src="script.js"></script>
+</body>
+</html>
