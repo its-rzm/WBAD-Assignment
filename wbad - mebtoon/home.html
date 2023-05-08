@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="home.css">
+    <script src="script/photoSlider.js"></script>
+    <script src="script/navbar.js"></script>
+    <script src="script/source.js"></script>
+    <title>Mebtoon</title>
+</head>
+<body>
+    <nav>
+        <div class="left">
+            <img src="assets/image/logoOren.png" alt="">
+        </div>
+        <div id="burgerMenu" class="burger-menu">
+            <img src="assets/BurgerMenu.svg" alt="">
+        </div>
+        <div id="navRight" class="right nav-responsive">
+            <span class="navbar-home on-page">Home</span>
+            <span class="navbar-top-author">Top Author</span>
+            <span class="navbar-top-mebtoon">Top MebToon</span>
+            <span class="navbar-subscribe" class="on-page">Subscribe</span>
+            <span class="categ">Categories<pre> </pre><label class="panah-bawah panah-bawah-warna"></label></span>
+                <div class="drop-down">
+                    <span onclick="loadTopMebtoon(1)" >Romance</span>
+                    <span onclick="loadTopMebtoon(2)">Fantasy</span>
+                    <span onclick="loadTopMebtoon(3)">Harem</span>
+                    <span onclick="loadTopMebtoon(4)">Action</span>
+                    <span onclick="loadTopMebtoon(5)">Showbiz</span>
+                    <span class="navbar-category-show-all">Show All</span>
+            </div>
+        </div>
+    </nav>
+    <div class="ganjelan"></div>
+
+    <header>
+        <span class="left-slide"><</span>
+        <span class="slide-photo" id="parentPhotoSlider"></span>
+        <div class="parent-titik" id="parentTitik"></div>
+        <span class="right-slide" >></span>
+    </header>
+
+    <main>
+        <div class="hottest-comics">
+            <span class="bagian-atas">
+                <h1>Hottest Comics</h1>
+                <a href="">See All ></a>
+            </span>
+            <span class="preview-comics">
+                <img class="image-preview" alt="" src="">
+                <span class="detail-comics">
+                    <h1 class="header-preview"></h1>
+                    <h3 class="category-preview"></h3>
+                    <span class="parent-view-and-like">
+                        <span class="view"><img class="image" src="assets/image/View.svg" alt=""><p class="preview-view"></p></span>
+                        <span class="like"><img src="assets/image/Favorite.svg" alt=""><p class="preview-like"></p></span>
+                    </span>
+                    <p class="desc preview-desc"></p>
+                    <span class="parent-button">
+                        <button class="navbar-subscribe">Subscribe</button>
+                        <button class="go-detail-comic">Detail Comic</button>
+                        <button >Share</button>
+                    </span>
+                    <span class="parent-comment">
+                        <h1 class="header-comment">Commencts (10)</h1>
+                        <br>
+                        <span class="container-comment">
+                            <span class="comment">
+                                <img src="assets/image/photo-profile-1.jpg" alt="">
+                                <span>
+                                    <h1>Joko Wanto</h1>
+                                    <p>the cat out the bag he looks just like his father i wonder how long she can hide it fromm him.</p>                            
+                                </span>
+                            </span>
+                            <span class="comment">
+                                <img src="assets/image/photo-profile-1.jpg" alt="">
+                                <span>
+                                    <h1>Santo Kung</h1>
+                                    <p>the cat out the bag he looks just like his father i wonder how long she can hide it fromm him.</p>                            
+                                </span>
+                            </span>
+                            <span class="see-all-comment">Show All Comment(8)</span>
+                        </span>
+                    </span>
+                </span>
+            </span>
+            <span class="list-comics" id="listPreviewComics">
+                
+            </span>
+        </div>
+
+        <div class="category">
+            <span class="bagian-atas">
+                <h1>Category</h1>
+                <a href="">See All ></a>
+            </span>
+            <span class="container-category" id="containerCategory">
+                <div id="listCategory">
+                
+                </div>
+                <span class="list-comics" id="listComicCategory">
+                    
+                </span>
+            </span>
+        </div>
+    </main>
+
+    <script>
+        listPreviewComics = $('#listPreviewComics');
+        for(let i = 0; i < 6; i++){
+            listPreviewComics.append(`<span class="comic" onclick="changePreview(${i})" > <img src=${comic[i].image} ><h1>${comic[i].headerComic}</h1> </span>`);
+        }
+
+        changePreview =(index)=>{
+            $('.image-preview').attr('src', comic[index].image);
+            $('.header-preview').html(comic[index].headerComic);
+            $('.category-preview').html(comic[index].category);
+            $('.preview-desc').html(comic[index].desc);
+            $('.preview-view').html(comic[index].seeing);
+            $('.preview-like').html(comic[index].like);
+            $('.go-detail-comic').attr( 'onclick' , `loadDetailMebtoon('${comic[index].comicId}')`);
+        }
+        changePreview(0);
+
+        listCategory = $("#listCategory");
+        category.map((data, index)=>{
+            listCategory.append(`<h1 onclick="changeOnclickClass(${index})" >${data.genreName}</h1>`);
+        });     
+
+
+        listComicCategory = $("#listComicCategory");
+        contentListCategory =()=>{
+            listComicCategory.empty();
+            getCurrentCategory = category[currentIndexOnclick].genreName;
+            let result = [];
+            comic.map((data , index)=>{
+                if(data.category.indexOf(getCurrentCategory) !== -1){
+                    result.push(data);
+                }
+            })
+            result.map((data , index)=>{
+                if(index < 6){
+                    listComicCategory.append(`<span class="comic" onclick="loadDetailMebtoon('${data.comicId}')"> <img src=${data.image} ><h1>${data.headerComic}</h1> </span>`);
+                }
+            })
+        }
+        
+
+
+        currentIndexOnclick = 0
+        changeOnclickClass =(index)=>{
+            listCategory.children().eq(currentIndexOnclick).removeClass("on-click");
+            listCategory.children().eq(index).addClass("on-click");
+            currentIndexOnclick = index;
+            contentListCategory();
+        }
+
+        changeOnclickClass(0);
+
+       
+
+    </script>
+    <br><br><br>
+</body>
+</html>

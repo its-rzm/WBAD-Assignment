@@ -1,0 +1,246 @@
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 91, 75, 0.23);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #ff5b4b;
+    border-radius: 20px;
+}
+
+body{
+    overflow-x: hidden;
+}
+
+nav{
+    background: rgb(255, 255, 255);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    position: fixed;
+    margin: auto;
+    width: 100%;
+    z-index: 100;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 80px;
+    gap: 20%;
+    text-align: center;
+}
+
+nav :nth-child(1) img{
+    padding-top: 5%;
+    height: 90%;
+    transition: height 0.5s, margin 0.5s;
+}
+
+nav :nth-child(2) img{
+    padding-top: 5%;
+    height: 90%;
+    cursor: pointer;
+}
+
+
+nav :nth-child(1) img:hover{
+    height: 130%;
+    margin-left: -10px;
+    cursor: pointer;
+}
+
+nav div{
+    height: 100%;
+    display: flex;
+}
+
+.nav-responsive{
+    display: flex;
+}
+
+nav span{
+    margin:  30px 20px;
+    padding-bottom: 25px;
+    font-size: 18px;
+    font-weight: bolder;
+    text-decoration: none;
+    color: rgba(255, 91, 75, 1);
+}
+
+nav span:hover{
+    color: rgb(90, 34, 29);
+    cursor: pointer;
+    animation: hoverSpan 1s;
+}
+
+@keyframes hoverSpan{
+    from{
+        color: rgba(255, 91, 75, 1);
+    }
+    to{
+        color: rgb(90, 34, 29);
+    }
+}
+
+.kelasPanahBawahHover{
+    animation: kelasSaatHover 1s;
+    border-top: 8px solid rgb(90, 34, 29);
+}
+
+.panah-on-page{
+    border-top: 8px solid rgb(90, 34, 29);
+
+}
+
+@keyframes kelasSaatHover {
+    from{
+        border-top: 8px solid rgba(255, 91, 75, 1);
+    }
+    to{
+        border-top: 8px solid rgb(90, 34, 29);
+    }
+}
+
+.kelasPanahBawah{
+    border-top: 8px solid rgba(255, 91, 75, 1);
+    animation: KelasTanpaHover 1s;
+}
+
+@keyframes KelasTanpaHover {
+    from{
+        border-top: 8px solid rgb(90, 34, 29);
+    }
+    to{
+        border-top: 8px solid rgba(255, 91, 75, 1);
+    }
+}
+
+.categ{
+    display: flex;
+    vertical-align: baseline;
+}
+
+.panah-bawah {
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    margin-top: 6px;
+}
+
+.panah-bawah-warna{
+    border-top: 8px solid #ff5b4b;
+} 
+
+.drop-down{
+    background: #ffd9d5e6;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    z-index: 10;
+    position: absolute;
+    display: none;
+    text-align: center;
+    margin-top: 85px;
+    margin-left: 500px;
+    height: auto;
+    border-radius: 5px;
+    min-width: 150px;
+}
+
+.right .drop-down span{
+    padding: 10px;
+    box-shadow: none;
+    margin: 0;
+}
+
+.burger-menu{
+    display: none;
+    cursor: pointer;
+    height: 60px;
+}
+
+.ganjelan{
+    padding-top: 80px;
+}
+
+.on-page{
+    border-bottom: solid 3px rgb(90, 34, 29);
+    color: rgb(90, 34, 29);
+}
+
+.on-page:hover{
+    animation: none;
+}
+
+@media only screen and (max-width: 950px) {
+    .nav-responsive{
+        display: none !important;
+    }
+
+    nav .right{
+        background: rgba(255, 217, 213, 0.98);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        
+        height: 100%;
+        width: 100%;
+        display: grid;
+        top: 80px;
+        position: absolute;
+        align-items: center;
+    }
+    
+    nav .navbar-top-author , nav .navbar-home , nav .navbar-top-mebtoon  , nav .navbar-subscribe , nav .categ{
+        background: rgba(255, 217, 213, 0.98);
+        /* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); */
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        margin: 0;
+        padding: 30px 0;
+    }
+
+    .on-page{
+        border: none;
+        background: rgba(195, 166, 163, 0.98) !important;
+    }
+
+    .categ{
+        justify-content: center;
+    }
+
+    nav .drop-down{
+        background: rgba(195, 166, 163, 0.98) !important;
+        position: fixed;
+        margin: auto;
+        width: auto;
+        right: 20px;
+        /* bottom: 0; */
+        top: 55vh;
+        left: 20px;
+    }
+
+    .burger-menu{
+        display:inherit;
+    }
+
+    nav :nth-child(1) img{
+        padding-top: 5%;
+        height: 90%;
+        transition: none;
+    }
+
+    nav :nth-child(1) img:hover{
+        height: 90%;
+        margin-left: 0px;
+        cursor: pointer;
+    }
+
+}

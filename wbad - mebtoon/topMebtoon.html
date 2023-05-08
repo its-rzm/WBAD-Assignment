@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets/image/logoOren.png">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="topMeebtoon.css">
+    <link rel="stylesheet" href="navBar.css">
+    <script src="script/navbar.js"></script>
+    <title>MeebToon</title>
+</head>
+<body>
+    <nav>
+        <div class="left">
+            <img src="assets/image/logoOren.png" alt="">
+        </div>
+        <div id="burgerMenu" class="burger-menu">
+            <img src="assets/BurgerMenu.svg" alt="">
+        </div>
+        <div id="navRight" class="right nav-responsive">
+            <span class="navbar-home">Home</span>
+            <span class="navbar-top-author">Top Author</span>
+            <span class="navbar-top-mebtoon on-page">Top MebToon</span>
+            <span class="navbar-subscribe" class="on-page">Subscribe</span>
+            <span class="categ">Categories<pre> </pre><label class="panah-bawah panah-bawah-warna"></label></span>
+                <div class="drop-down">
+                    <span onclick="loadTopMebtoon(1)" >Romance</span>
+                    <span onclick="loadTopMebtoon(2)">Fantasy</span>
+                    <span onclick="loadTopMebtoon(3)">Harem</span>
+                    <span onclick="loadTopMebtoon(4)">Action</span>
+                    <span onclick="loadTopMebtoon(5)">Showbiz</span>
+                    <span class="navbar-category-show-all">Show All</span>
+            </div>
+        </div>
+    </nav>
+    <div class="ganjelan"></div>
+
+    <main>
+        <div class="category-comic" >
+            <span id="categoryComic">
+                <h1 onclick="changeCategory(0)">All</h1>
+                
+            </span>
+        </div>
+        <div class="list-comics" id="containerComic">
+            
+        </div>
+        <div class="recomended-for-you">
+            <h1 class="header">Recomended For You</h1>
+            <div class="list-comics"  id="recomendedForYou">
+               
+            </div>
+        </div>
+    </main>
+
+    <script>
+        categoryComic = $("#categoryComic");
+
+        category.map((data, index)=>{
+            categoryComic.append(`<h1 onclick="changeCategory(${index+1})" >${data.genreName}</h1>`);
+        });   
+
+        if(typeof currentCategory === 'undefined'){
+            currentCategory = 0;
+        }
+
+
+        containerComic = $("#containerComic");
+
+        loadComic =(data , index)=>{
+            containerComic.append(`
+                <span class="comic" onclick="loadDetailMebtoon('${data.comicId}')"> 
+                    <img src="${data.image}" alt="">
+                    <h1>${data.headerComic}</h1>
+                    <span class="like"><img src="assets/image/favorite.svg" alt="">110.5k</span>
+                </span>
+            `);
+        }
+
+        filterData =()=>{
+            if(currentCategory === 0){
+                comic.map((data , index)=>{
+                    loadComic(data , index)
+                })
+            }else{
+                getNameCategory = categoryComic.children().eq(currentCategory).text();
+                comic.map((data , index)=>{
+                    if(data.category.indexOf(getNameCategory) !== -1){
+                        loadComic(data , index)
+                    }
+                })
+            }
+        }
+        
+        changeCategory =(index)=>{
+            containerComic.empty()
+            categoryComic.children().eq(currentCategory).removeClass('on-click');
+            categoryComic.children().eq(index).addClass('on-click');
+            currentCategory = index;
+            filterData()
+        }
+
+        categoryComic.children().eq(currentCategory).addClass('on-click');
+        changeCategory(currentCategory);
+
+
+        // RECOMENDED FOR YOU
+
+        recomendedForYou = $("#recomendedForYou");
+        comic.map((data , index)=>{
+            if(index < 6){
+                recomendedForYou.append(`
+                <span class="comic">
+                        <img src=${data.image} alt="">
+                        <h1>${data.headerComic}</h1>
+                    </span>
+                `);
+            }
+        });
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="subscribe.css">
+    <script src="script/navbar.js"></script>
+</head>
+<body>
+    <nav>
+        <div class="left">
+            <img src="assets/image/logoOren.png" alt="">
+        </div>
+        <div id="burgerMenu" class="burger-menu">
+            <img src="assets/BurgerMenu.svg" alt="">
+        </div>
+        <div id="navRight" class="right nav-responsive">
+            <span class="navbar-home">Home</span>
+            <span class="navbar-top-author">Top Author</span>
+            <span class="navbar-top-mebtoon">Top MebToon</span>
+            <span class="navbar-subscribe on-page" class="on-page">Subscribe</span>
+            <span class="categ">Categories<pre> </pre><label class="panah-bawah panah-bawah-warna"></label></span>
+                <div class="drop-down">
+                    <span onclick="loadTopMebtoon(1)" >Romance</span>
+                    <span onclick="loadTopMebtoon(2)">Fantasy</span>
+                    <span onclick="loadTopMebtoon(3)">Harem</span>
+                    <span onclick="loadTopMebtoon(4)">Action</span>
+                    <span onclick="loadTopMebtoon(5)">Showbiz</span>
+                    <span class="navbar-category-show-all">Show All</span>
+            </div>
+        </div>
+    </nav>
+    <div class="ganjelan"></div>
+
+    <main>
+        <h1>Subscription</h1>
+        <form action="#" onsubmit="submitForm(); return false;" >
+            <div>
+                <label for="name">Full Name</label>
+                <input onfocus="focusListener('name')" onblur="blurListener('name')" onchange="changeListener('name')" id="name" type="text" name="name">
+                <span class="message-error" id="errorName"></span>
+            </div>
+            <div>
+                <label for="email">Email</label>
+                <input onfocus="focusListener('email')" onblur="blurListener('email')" onchange="changeListener('email')" id="email" type="email" name="email">
+                <span class="message-error" id="errorEmail" ></span>
+            </div>
+            <div>
+                <label for="phone-number">Phone Number</label>
+                <input onfocus="focusListener('phoneNumber') " onblur="blurListener('phoneNumber')" onchange="changeListener('phoneNumber')" id="phoneNumber" type="number" name="phone-number">
+                <span class="message-error" id="errorPhoneNumber" ></span>
+            </div>
+            <div>
+                <label for="country">Country</label>
+                <select onfocus="focusListener('country')" onblur="blurListener('country')" onchange="changeListener('country')" name="country" id="country"></select>
+                <span class="message-error" id="errorCountry" ></span>
+            </div>
+            <div>
+                <input onblur="blurListener('agreement')" onchange="changeListener('agreement')" onclick="focusListener('agreement')" id="agreement" type="checkbox" name="agreement" class="checkbox">
+                <label onfocus="focusListener('agreement')" onclick="focusListener('agreement')" for="agreement">Agreement with Terms and Conditions</label>
+                <span class="message-error" id="errorAgreement"></span>
+            </div>
+            <span>
+                <button>Cancel</button>
+                <button type="submit" >Submit</button>
+            </span>
+        </form>
+    </main>
+
+    <script src="script/list-country.js"></script>
+
+    <script>
+         name = "", email = "", phoneNumber = "", country = "", code="", agreement = "";
+
+        selectCountry = document.getElementById('country');
+        listCountry.forEach(data => {
+            let option = document.createElement('option');
+            option.setAttribute('value', `${data.name} (${data.code})`);
+            option.innerHTML = `${data.name} (${data.code})`;
+            selectCountry.appendChild(option);
+        });
+
+        function changeListener(id){
+            if(id === "name"){
+                name = document.getElementById(id).value;
+            }else if(id === "email"){
+                email = document.getElementById(id).value;
+            }else if(id === "phoneNumber"){
+                phoneNumber = document.getElementById(id).value;
+                if(phoneNumber.startsWith(code) === false){
+                        const errorPhoneNumber = $('#errorPhoneNumber');
+                        errorPhoneNumber.css('display', 'block');
+                        errorPhoneNumber.html('Mohon Phone Number harus sesuai dengan code negara!');
+                    }
+            }else if(id === "country"){
+                let index = document.getElementById(id).selectedIndex;
+                country = listCountry[index].name;
+                code = listCountry[index].code;
+                if(phoneNumber !== ""){
+                    if(phoneNumber.startsWith(code) === false){
+                        const errorPhoneNumber = $('#errorPhoneNumber');
+                        errorPhoneNumber.css('display', 'block');
+                        errorPhoneNumber.html('Mohon Phone Number harus sesuai dengan code negara!');
+                    }
+                }
+            }else if(id === "agreement"){
+                agreement = document.getElementById(id).checked;
+                
+            }
+        }        
+
+        function blurListener(id){
+            if(id === "name"){
+                const errorName = $('#errorName');
+                if(name === ""){
+                    errorName.css('display', 'block');
+                    errorName.html('Mohon Isi Textfield Name!');
+                }else if(name.length <= 5){
+                    errorName.css('display', 'block');
+                    errorName.html('Name must be more than 5 letters!');
+                }
+            }else if(id === "email"){
+                const errorEmail = $('#errorEmail');
+                if(email === ""){
+                    errorEmail.css('display', 'block');
+                    errorEmail.html('Mohon Isi Textfield Email!');
+                }else if(email.indexOf("@") === -1){
+                    errorEmail.css('display', 'block');
+                    errorEmail.html('Mohon Email diisi dengan sesuai!');
+                }else{
+                    let validation = false;
+                    let list = ['.com','.id','.ac','.ac.id','.co.id'];
+
+                    list.forEach(format=>{
+                        if(email.lastIndexOf(format) !== -1){
+                            validation = true;
+                        }
+                    })
+
+                    if(validation === false){
+                        errorEmail.css('display', 'block');
+                        errorEmail.html('Mohon Email diisi dengan sesuai!');
+                    }
+                }
+            }else if(id === "phoneNumber"){
+                const errorPhoneNumber = $('#errorPhoneNumber');
+                if(phoneNumber === ""){
+                    errorPhoneNumber.css('display', 'block');
+                    errorPhoneNumber.html('Mohon Numberfield diisi dengan sesuai');
+                }
+            }else if(id === "country"){
+                const errorCountry = $('#errorCountry');
+                if( country === "" || country === "None"){
+                    errorCountry.css('display', 'block');
+                    errorCountry.html("Mohon Country sesuai dengan lokasi negara anda!")
+                }
+            }else if(id === "agreement"){
+                const errorAgreement = $('#errorAgreement');
+                if(agreement === "" || agreement === false){
+                    errorAgreement.css('display', 'block');
+                    errorAgreement.html("Mohon Checklist Checkbox terlebih dahulu!")
+                }
+            }
+        }
+
+        function focusListener(id){
+            if(id === "name"){
+                $('#errorName').css('display', 'none');
+            }else if(id === "email"){
+                $('#errorEmail').css('display', 'none');
+            }else if(id === "phoneNumber"){
+                $('#errorPhoneNumber').css('display', 'none');
+            }else if(id === "country"){
+                $('#errorCountry').css('display', 'none');
+            }else if(id === "agreement"){
+                $('#errorAgreement').css('display', 'none');
+            }
+        }
+
+        function submitForm(){
+            const errorName = $('#errorName');
+            const errorEmail = $('#errorEmail');
+            const errorPhoneNumber = $('#errorPhoneNumber');
+            const errorCountry = $('#errorCountry');
+            const errorAgreement = $('#errorAgreement');
+
+            if(name === ""){
+                errorName.css('display', 'block');
+                errorName.html('Mohon Isi Textfield Name!');
+                return false;
+            }else if(name.length <= 5){
+                errorName.css('display', 'block');
+                errorName.html('Name must be more than 5 letters!');
+                return false;
+            }
+
+            if(email === ""){
+                errorEmail.css('display', 'block');
+                errorEmail.html('Mohon Isi Textfield Email!');
+                return false;
+            }else if(email.indexOf("@") === -1){
+                errorEmail.css('display', 'block');
+                errorEmail.html('Mohon Email diisi dengan sesuai!');
+                return false;
+            }else{
+                let validation = false;
+                let list = ['.com','.id','.ac','.ac.id','.co.id'];
+
+                list.forEach(format=>{
+                    if(email.lastIndexOf(format) !== -1){
+                        validation = true;
+                    }
+                })
+
+                if(validation === false){
+                    errorEmail.css('display', 'block');
+                    errorEmail.html('Mohon Email diisi dengan sesuai!');
+                    return false;
+                }
+            }
+            
+            if(phoneNumber === ""){
+                errorPhoneNumber.css('display', 'block');
+                errorPhoneNumber.html('Mohon Numberfield diisi dengan sesuai');
+                return false;
+            }
+
+            if( country === "" || country === "None"){
+                errorCountry.css('display', 'block');
+                errorCountry.html("Mohon Country sesuai dengan lokasi negara anda!")
+                return false;
+            }
+
+            if(agreement === "" || agreement === false){
+                errorAgreement.css('display', 'block');
+                errorAgreement.html("Mohon Checklist Checkbox terlebih dahulu!")
+                return false;
+            }
+
+        }
+    </script>
+</body>
+</html>

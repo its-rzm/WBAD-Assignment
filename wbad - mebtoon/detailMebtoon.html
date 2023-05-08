@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="detailMebtoon.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="script/navbar.js"></script>
+</head>
+<body>
+    <nav>
+        <div class="left">
+            <img src="assets/image/logoOren.png" alt="">
+        </div>
+        <div id="burgerMenu" class="burger-menu">
+            <img src="assets/BurgerMenu.svg" alt="">
+        </div>
+        <div id="navRight" class="right nav-responsive">
+            <span class="navbar-home">Home</span>
+            <span class="navbar-top-author">Top Author</span>
+            <span class="navbar-top-mebtoon">Top MebToon</span>
+            <span class="navbar-subscribe" class="on-page">Subscribe</span>
+            <span class="categ">Categories<pre> </pre><label class="panah-bawah panah-bawah-warna"></label></span>
+                <div class="drop-down">
+                    <span onclick="loadTopMebtoon(1)" >Romance</span>
+                    <span onclick="loadTopMebtoon(2)">Fantasy</span>
+                    <span onclick="loadTopMebtoon(3)">Harem</span>
+                    <span onclick="loadTopMebtoon(4)">Action</span>
+                    <span onclick="loadTopMebtoon(5)">Showbiz</span>
+                    <span class="navbar-category-show-all">Show All</span>
+            </div>
+        </div>
+    </nav>
+    <div class="ganjelan"></div>
+
+    <main>
+        <div class="detail-comic">
+            <img id="imagePreview" class="image-preview" alt="">
+            <span class="desc-comic">
+                <h1 id="headerComic"></h1>
+                <h3 id="categoryComic"></h3>
+                <span class="parent-view-and-like">
+                    <span class="view"><img class="image" src="assets/image/View.svg" alt="">12.3k</span>
+                    <span class="like"><img src="assets/image/Favorite.svg" alt="">110.5k</span>
+                </span>
+                <p class="author-name" id="authorName"></p>
+                <p id="descriptionComic"></p>
+                <span class="parent-button">
+                    <button class="navbar-subscribe">Subscribe</button>
+                    <button>Start Reading</button>
+                    <button>Share</button>
+                </span>
+            </span>
+        </div>
+        <div class="episode-comment">
+            <span class="parent-header"><h1 class="on-click">Episodes</h1><h1>/</h1><h1>Comments</h1></span>
+            <hr>
+            <!-- <br> -->
+            <span class="parent-episode">
+                <div>
+                    <h1>Episode 1</h1>
+                    <h3>12/02/2022</h3>
+                    <span class="parent-like-comment">
+                        <span class="view"><img src="assets/image/View.svg" alt=""><p>110.5k</p></span>
+                        <span class="like"><img src="assets/image/Favorite.svg" alt=""><p>110.5k</p></span>
+                    </span>
+                </div>
+                <div>
+                    <h1>Episode 1</h1>
+                    <h3>12/02/2022</h3>
+                    <span class="parent-like-comment">
+                        <span class="view"><img src="assets/image/View.svg" alt=""><p>110.5k</p></span>
+                        <span class="like"><img src="assets/image/Favorite.svg" alt=""><p>110.5k</p></span>
+                    </span>
+                </div><div>
+                    <h1>Episode 1</h1>
+                    <h3>12/02/2022</h3>
+                    <span class="parent-like-comment">
+                        <span class="view"><img src="assets/image/View.svg" alt=""><p>110.5k</p></span>
+                        <span class="like"><img src="assets/image/Favorite.svg" alt=""><p>110.5k</p></span>
+                    </span>
+                </div><div>
+                    <h1>Episode 1</h1>
+                    <h3>12/02/2022</h3>
+                    <span class="parent-like-comment">
+                        <span class="view"><img src="assets/image/View.svg" alt=""><p>110.5k</p></span>
+                        <span class="like"><img src="assets/image/Favorite.svg" alt=""><p>110.5k</p></span>
+                    </span>
+                </div><div>
+                    <h1>Episode 1</h1>
+                    <h3>12/02/2022</h3>
+                    <span class="parent-like-comment">
+                        <span class="view"><img src="assets/image/View.svg" alt=""><p>110.5k</p></span>
+                        <span class="like"><img src="assets/image/Favorite.svg" alt=""><p>110.5k</p></span>
+                    </span>
+                </div><div>
+                    <h1>Episode 1</h1>
+                    <h3>12/02/2022</h3>
+                    <span class="parent-like-comment">
+                        <span class="view"><img src="assets/image/View.svg" alt=""><p>110.5k</p></span>
+                        <span class="like"><img src="assets/image/Favorite.svg" alt=""><p>110.5k</p></span>
+                    </span>
+                </div><div>
+                    <h1>Episode 1</h1>
+                    <h3>12/02/2022</h3>
+                    <span class="parent-like-comment">
+                        <span class="view"><img src="assets/image/View.svg" alt=""><p>110.5k</p></span>
+                        <span class="like"><img src="assets/image/Favorite.svg" alt=""><p>110.5k</p></span>
+                    </span>
+                </div><div>
+                    <h1>Episode 1</h1>
+                    <h3>12/02/2022</h3>
+                    <span class="parent-like-comment">
+                        <span class="view"><img src="assets/image/View.svg" alt=""><p>110.5k</p></span>
+                        <span class="like"><img src="assets/image/Favorite.svg" alt=""><p>110.5k</p></span>
+                    </span>
+                </div><div>
+                    <h1>Episode 1</h1>
+                    <h3>12/02/2022</h3>
+                    <span class="parent-like-comment">
+                        <span class="view"><img src="assets/image/View.svg" alt=""><p>110.5k</p></span>
+                        <span class="like"><img src="assets/image/Favorite.svg" alt=""><p>110.5k</p></span>
+                    </span>
+                </div><div>
+                    <h1>Episode 1</h1>
+                    <h3>12/02/2022</h3>
+                    <span class="parent-like-comment">
+                        <span class="view"><img src="assets/image/View.svg" alt=""><p>110.5k</p></span>
+                        <span class="like"><img src="assets/image/Favorite.svg" alt=""><p>110.5k</p></span>
+                    </span>
+                </div>
+            </span>
+        </div>
+    </main>
+    <div class="recomended-for-you">
+        <h1 class="header">Recomended For You</h1>
+        <div class="list-comics"  id="recomendedForYou">
+            <!-- <span class="comic">
+                <img src="assets/image/CMC001.jpg" alt="">
+                <h1>Marry One Get One Free</h1>
+            </span> -->
+               
+        </div>
+    </div>
+    
+    <br>
+    <script>
+
+        comicId = window.location.id
+
+        
+
+        
+        recomendedForYou = $("#recomendedForYou");
+        comic.map((data , index)=>{
+
+            if(data.comicId === comicId){
+                $("#imagePreview").attr("src", data.image);
+                $("#headerComic").html(data.headerComic);
+                $("#categoryComic").html(data.category);
+                author.map(dataAuthor=>{
+                    if(dataAuthor.authorId === data.authorId){
+                        $("#authorName").html(`Author Name: ${dataAuthor.authorName}`)
+                    }
+                })
+                $("#descriptionComic").html(data.desc)
+
+            }
+
+            // RECOMENDED FOR YOU
+            if(index < 6){
+                recomendedForYou.append(`
+                <span class="comic">
+                        <img src=${data.image} alt="">
+                        <h1>${data.headerComic}</h1>
+                    </span>
+                `);
+            }
+        });
+    </script>
+</body>
+</html>

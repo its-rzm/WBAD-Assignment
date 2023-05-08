@@ -1,0 +1,150 @@
+main{
+    padding: 20px 0;
+    width: 100%;
+    display: grid;
+    row-gap: 30px;
+    color: #4C1510;
+}
+
+main div{
+    background: rgba(255, 91, 75, 0.52);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8.9px);
+    -webkit-backdrop-filter: blur(8.9px);
+    border: 1px solid rgba(255, 91, 75, 0.48);
+    width: 70%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    column-gap: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.container-bio{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bio-author {
+    display: grid;
+    grid-template-rows: 100px auto auto auto;
+}
+
+.bio-author h1{
+    font-size: 20px;
+    font-weight: bold;
+    padding-top: 20px;
+}
+
+.bio-author .image-profile-author{
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.bio-author img:nth-child(1) {
+    width: none;
+    height: 100%;
+    border-radius: 50%;
+    margin: auto;
+}
+
+.bio-author span:nth-child(4){
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+}
+
+.bio-author span:nth-child(4) img{
+    width: 100%;
+}
+
+main div .list-comic{
+    display: flex;
+    overflow: hidden;
+    overflow-x: auto;
+
+    background: rgba(255, 91, 75, 0.23);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 5px;
+}
+
+main div .list-comic::-webkit-scrollbar-track {
+    background: none;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-radius: 0;
+}
+
+
+main div .list-comic div{
+    background: none;
+    border-radius: 0;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: none;
+
+    display: flex;
+    justify-content: space-evenly;
+    width: auto;
+    margin: 0;
+    padding: 20px;
+    cursor: pointer;
+}
+
+main div .list-comic div .comic{
+    min-width: 200px;
+    max-width: 200px;
+    display: grid;
+}
+
+.list-comic span img{
+    width: 100%;
+    border-radius: 5px;
+}
+
+.list-comic h1{
+    font-size: 18px;
+    font-weight: bold;
+    text-align: left;
+    margin-top: 5px;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    white-space: wrap;
+    word-break: break-all;
+    font-weight: 450;
+    overflow: hidden;
+}
+
+span .like{
+    display: grid;
+    grid-template-columns: 21px 10%;
+    column-gap: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+@media only screen and (max-width: 950px) {
+    main div{
+        width: 90%;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    main div{
+        grid-template-columns: auto;
+        gap: 20px;
+    }
+}

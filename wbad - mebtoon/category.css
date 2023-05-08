@@ -1,0 +1,30 @@
+main{
+    width: 100%;
+}
+
+main div{
+    background: rgba(255, 91, 75, 0.52);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8.9px);
+    -webkit-backdrop-filter: blur(8.9px);
+    border: 1px solid rgba(255, 91, 75, 0.48);
+    
+    width: 70%;
+    height: auto;
+    margin: auto;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+main div:hover{
+    cursor: pointer;
+}
+
+main div h1{
+    font-size: 20px;
+    font-weight: 500;
+    padding-bottom: 20px;
+}

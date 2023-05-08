@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="category.css">
+    <script src="script/photoSlider.js"></script>
+    <script src="script/navbar.js"></script>
+    <title>Mebtoon</title>
+</head>
+<body>
+    <nav>
+        <div class="left">
+            <img src="assets/image/logoOren.png" alt="">
+        </div>
+        <div id="burgerMenu" class="burger-menu">
+            <img src="assets/BurgerMenu.svg" alt="">
+        </div>
+        <div id="navRight" class="right nav-responsive">
+            <span class="navbar-home">Home</span>
+            <span class="navbar-top-author">Top Author</span>
+            <span class="navbar-top-mebtoon">Top MebToon</span>
+            <span class="navbar-subscribe" class="on-page">Subscribe</span>
+            <span class="categ on-page">Categories<pre> </pre><label class="panah-bawah  panah-on-page"></label></span>
+                <div class="drop-down">
+                    <span onclick="loadTopMebtoon(1)" >Romance</span>
+                    <span onclick="loadTopMebtoon(2)">Fantasy</span>
+                    <span onclick="loadTopMebtoon(3)">Harem</span>
+                    <span onclick="loadTopMebtoon(4)">Action</span>
+                    <span onclick="loadTopMebtoon(5)">Showbiz</span>
+                    <span class="navbar-category-show-all">Show All</span>
+            </div>
+        </div>
+    </nav>
+    <div class="ganjelan"></div>
+
+    <main id="main">
+        
+    </main>
+
+    <script>
+        main = $("#main");
+        category.map((data , index)=>{
+            main.append(`
+            <div onclick="loadTopMebtoon(${index+1})">
+                <h1>${data.genreName}</h1>
+                <h5>${data.genreDesc}</h5>
+            </div>
+            `);
+        })
+    </script>
+</body>
+</html>
